@@ -6,6 +6,9 @@ export default {
     ],
     theme: {
         extend: {},
+        container: {
+            padding: '1 rem',
+        }
     },
     plugins: [],
 };

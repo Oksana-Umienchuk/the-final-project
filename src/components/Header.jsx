@@ -1,15 +1,24 @@
+import { NavLink } from "react-router-dom";
+
+const navClass = "mr-4 font-bold py-2 px-4 rouded";
+
+/*створення функції для визначення класу active
+*/
+function getNavClasses({ isActive }) {
+    return isActive ? `${navClass} nav-active` : navClass;
+}
 
 function Header() {
     return (
         <>
-            <header className="header container m-auto py-1 border-b flex justify-between items-center">
-                <div className="logo p-0 align-middle">
-                    FilmsLand
+            <header className="header container m-auto py-1 border-b">
+                <div className="logo p-0 align-middle h-8">
+                    <h1 className="header-title text-3xl">FilmsLand</h1>
                 </div>
-                <nav className="menu flex gap-5 justify-center">
-                    <a href="/">Home</a>
-                    <a href="/">Films</a>
-                    <a href="/">Popular Films</a>
+                <nav className="menu flex gap-10 justify-center py-4">
+                    <NavLink className={getNavClasses} to="/">Home</NavLink>
+                    <NavLink className={getNavClasses} to="/films">Films</NavLink>
+                    <NavLink className={getNavClasses} to="/popularfilms">Popular Films</NavLink>
                 </nav>
             </header>
         </>
