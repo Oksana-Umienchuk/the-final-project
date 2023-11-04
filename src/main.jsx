@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom/client';
 import App from './App.jsx';
 import './index.css';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import CheckoutPage from './pages/CheckoutPage.jsx';
-import Checkout from './layout/Checkout.jsx';
 import NotFoundPage from './pages/NotFoundPage.jsx';
 
 const router = createBrowserRouter([
@@ -34,17 +32,7 @@ const router = createBrowserRouter([
         path: '*',
         element: <NotFoundPage />
         // lazy: () => import('./pages/NotFoundPage.jsx')
-    },
-    // {
-    //     path: '/checkout',
-    //     element: <CheckoutPage />,
-    //     children: [
-    //         {
-    //             path: '/checkout',
-    //             element: <Checkout />
-    //         }
-    //     ]
-    // }
+    }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
