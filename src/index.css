@@ -6,3 +6,21 @@
 .nav-active {
     @apply bg-blue-800 text-white rounded;
 }
+
+/*slider*/
+
+.swiper-button-next::after {
+    color: white;
+}
+
+.swiper-button-prev::after {
+    color: white;
+}
+
+/* .swiper-pagination-bullet {
+    backgroun: white;
+}
+
+.swiper-pagination-bullet-active {
+    backgroun: red;
+} */
