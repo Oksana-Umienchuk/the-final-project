@@ -1,6 +1,8 @@
-import { Pagination } from "@mui/material";
+import { Pagination, Rating } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import RatingFilm from "../components/RatingFilm";
+
 
 const imagesUrl = 'https://image.tmdb.org/t/p/w500'; //шлях до картинки
 
@@ -22,7 +24,6 @@ function Films() {
                     .getItem(url)
             );
 
-            console.log(data)
             setTotalPages(data ? data.total_pages : 1);
             return data ? data.results : [];
         }
@@ -63,16 +64,16 @@ function Films() {
     return (
         <>
             <h1 className="text-5xl text-zinc-950 py-4">Films</h1>
-            <div className="flex flex-wrap">
+            <div className="flex flex-wrap items-start">
                 {filmList.map(
                     (film) => {
                         return (
-                            <div key={film.id} className="p-5 w-1/3">
-                                <Link to={`/films/${film.id}`}>
-                                    <h2 className="text-3xl p-3">{film.title}</h2>
+                            <div key={film.id} className="p-5 w-1/3 h-full">
+                                <Link to={`/films/${film.id}`} className="flex flex-col h-full">
                                     <img src={`${imagesUrl}${film.poster_path}`} alt="Poster" />
-                                    <p className="text-2xl p-2">{film.vote_average}</p>
+                                    <h2 className="text-2xl p-3 bold">{film.title}</h2>
                                 </Link>
+                                <RatingFilm rating={film.vote_average} />
                             </div>
                         );
                     }

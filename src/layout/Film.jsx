@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import RatingFilm from "../components/RatingFilm";
 
 const imageUrl = 'https://image.tmdb.org/t/p/original';
 function Film() {
@@ -13,6 +14,8 @@ function Film() {
             ) || null;
         }
     );
+
+    const [videoKey, setVideoKey] = useState('');
 
     useEffect(
         () => {
@@ -37,24 +40,52 @@ function Film() {
                     }
                 )
                 .catch(err => console.error(err));
+
+            fetch(`https://api.themoviedb.org/3/movie/${params.id}/videos?language=en-US`, options)
+
+                .then(response => response.json())
+                .then(
+                    (response) => {
+                        if (response.results.length > 0) {
+                            setVideoKey(response.results[0].key);
+                        } else {
+                            return;
+                        }
+
+                        console.log(response.results);
+
+                        window.localStorage.setItem(
+                            `https://api.themoviedb.org/3/movie/${params.id}/videos?language=en-US`,
+                            JSON.stringify(response)
+                        );
+                    }
+                )
+                .catch(err => console.error(err));
         },
         [params]
+
     );
 
     if (!film) return <p>Loading...</p>;
 
     return (
         <>
-            <h1 className="text-5xl text-zinc-950 py-4">{film.original_title}</h1>
             <div className="flex">
                 <img src={`${imageUrl}${film.poster_path}`} alt="Poster" className="w-1/2 p-2" />
-                <div className="p-2 text-1xl">
-                    <p>Rating: {film.vote_average}</p>
-                    <p>{film.overview}</p>
-                    <p>{params.id}</p>
+                <div className="p-2 text-1xl text-left">
+                    <h1 className="text-4xl text-zinc-950 py-4 font-bold">{film.original_title}</h1>
+                    <div className="flex p-1">
+                        <p className="mr-2">Rating:</p>
+                        <RatingFilm rating={film.vote_average} />
+                        <p className="ml-2">{film.vote_average}</p>
+                    </div>
+                    <p className="my-3">{film.overview}</p>
+                    <p className="my-3">ID: {params.id}</p>
+                    {videoKey && <a href={`https://www.youtube.com/watch?v=${videoKey}`}>Trailer</a>}
                 </div>
+
             </div>
-            <img src={`${imageUrl}${film.backdrop_path}`} alt="Poster" />
+            <img src={`${imageUrl}${film.backdrop_path}`} alt="Poster" className="p-3" />
         </>
     );
 }
