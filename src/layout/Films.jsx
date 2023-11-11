@@ -1,8 +1,7 @@
-import { Pagination, Rating } from "@mui/material";
+import { Pagination } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import RatingFilm from "../components/RatingFilm";
-
 
 const imagesUrl = 'https://image.tmdb.org/t/p/w500'; //шлях до картинки
 
@@ -14,7 +13,7 @@ function Films() {
 
     const url = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc`;
 
-    console.log(url, page);
+    // console.log(url, page);
     const [filmList, setFilmList] = useState(
         () => {
             //перевіряємо чи є щось у localStorage. Якщо є, то дістаємо, якщо немає - кладемо пустий масив
@@ -51,7 +50,7 @@ function Films() {
             setFilmList(data.results); //робимо запит на data.results
             setTotalPages(data.total_pages);
         }
-        console.log(filmList.length);
+        // console.log(filmList.length);
         if (!filmList.length || page !== currentPage) {
             getFilms();
             setCurrentPage(page);
@@ -59,7 +58,7 @@ function Films() {
         //якщо в в змінній filmList вже є дані, то нічого не робимо, якщо дані =0, то робимо запит на сервер
     }, [page, currentPage]);
 
-    console.log(filmList);
+    // console.log(filmList);
 
     return (
         <>
@@ -68,20 +67,20 @@ function Films() {
                 {filmList.map(
                     (film) => {
                         return (
-                            <div key={film.id} className="p-5 w-1/3 h-full">
-                                <Link to={`/films/${film.id}`} className="flex flex-col h-full">
-                                    <img src={`${imagesUrl}${film.poster_path}`} alt="Poster" />
-                                    <h2 className="text-2xl p-3 bold">{film.title}</h2>
+                            <div key={film.id} className="px-3 py-2 w-1/3 h-full">
+                                <Link to={`/films/${film.id}`} className="flex flex-col h-full ">
+                                    <img src={`${imagesUrl}${film.poster_path}`} alt="Poster" className="mb-2 shadow-slate-600 shadow-lg" />
+                                    <RatingFilm rating={film.vote_average} className="my-2 flex justify-center" />
+                                    <p>Rating: {film.vote_average}</p>
+                                    <h2 className="text-xl p-3 bold">{film.title}</h2>
                                 </Link>
-                                <RatingFilm rating={film.vote_average} />
                             </div>
                         );
                     }
                 )}
-
             </div >
             <div>
-                <Pagination count={totalPages} shape="rounded" onChange={(e, newPage) => {
+                <Pagination className="flex justify-center" count={totalPages} color="primary" onChange={(e, newPage) => {
                     setPage(newPage);
                 }} />
             </div>

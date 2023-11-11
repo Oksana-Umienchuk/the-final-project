@@ -10,17 +10,13 @@
 /*slider*/
 
 .swiper-button-next::after {
-    color: white;
+    color: bg-blue-800;
 }
 
 .swiper-button-prev::after {
-    color: white;
+    color: bg-blue-800;
 }
 
-/* .swiper-pagination-bullet {
-    backgroun: white;
-}
-
-.swiper-pagination-bullet-active {
-    backgroun: red;
+/* input#outlined-basic {
+    padding: 17px;
 } */

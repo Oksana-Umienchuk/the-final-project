@@ -22,9 +22,13 @@ const router = createBrowserRouter([
                 path: '/films/:id',
                 lazy: () => import('./layout/Film.jsx')
             },
+            // {
+            //     path: '/popularfilms',
+            //     lazy: () => import('./layout/PopularFilms.jsx')
+            // },
             {
-                path: '/popularfilms',
-                lazy: () => import('./layout/PopularFilms.jsx')
+                path: '/search',
+                lazy: () => import('./layout/Search.jsx')
             },
         ]
     },

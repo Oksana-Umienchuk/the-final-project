@@ -62,7 +62,7 @@ function Slider() {
                                 <h2 className="text-4xl p-3 font-bold m-3">{slide.title}</h2>
                                 <p className="text-xl p-2 m-3">{slide.overview}</p>
                             </div>
-                            <Button variant="contained" className='p-2 m-3'>Watch</Button>
+                            <Button variant="contained" className='p-2 m-3 bg-blue-800'>Watch</Button>
                         </Link>
                     </SwiperSlide >
                 ))}

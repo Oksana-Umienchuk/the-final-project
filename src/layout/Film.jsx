@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { Button } from '@mui/material';
+
 import RatingFilm from "../components/RatingFilm";
 
 const imageUrl = 'https://image.tmdb.org/t/p/original';
+
 function Film() {
     const params = useParams();
 
@@ -15,7 +18,14 @@ function Film() {
         }
     );
 
-    const [videoKey, setVideoKey] = useState('');
+    const [videoKey, setVideoKey] = useState(
+
+        () => {
+            return JSON.parse(
+                window.localStorage.getItem(`https://api.themoviedb.org/3/movie/${params.id}/videos?language=en-US`)
+            ) || '';
+        }
+    );
 
     useEffect(
         () => {
@@ -52,7 +62,7 @@ function Film() {
                             return;
                         }
 
-                        console.log(response.results);
+                        // console.log(response.results);
 
                         window.localStorage.setItem(
                             `https://api.themoviedb.org/3/movie/${params.id}/videos?language=en-US`,
@@ -67,11 +77,12 @@ function Film() {
     );
 
     if (!film) return <p>Loading...</p>;
-
+    console.log(film);
     return (
         <>
-            <div className="flex">
-                <img src={`${imageUrl}${film.poster_path}`} alt="Poster" className="w-1/2 p-2" />
+            <div className="">
+                {/* <img src={`${imageUrl}${film.poster_path}`} alt="Poster" className="w-1/2 p-2" /> */}
+                <img src={`${imageUrl}${film.backdrop_path}`} alt="Poster" className="p-3" />
                 <div className="p-2 text-1xl text-left">
                     <h1 className="text-4xl text-zinc-950 py-4 font-bold">{film.original_title}</h1>
                     <div className="flex p-1">
@@ -80,12 +91,15 @@ function Film() {
                         <p className="ml-2">{film.vote_average}</p>
                     </div>
                     <p className="my-3">{film.overview}</p>
+                    <p className="my-3">Release Date: {film.release_date}</p>
                     <p className="my-3">ID: {params.id}</p>
-                    {videoKey && <a href={`https://www.youtube.com/watch?v=${videoKey}`}>Trailer</a>}
+                    <Link to={`https://www.youtube.com/watch?v=${videoKey}`} target='_blank'>
+                        <Button variant="contained" className='p-2 m-3 bg-blue-800'>Watch Trailer On YouTube</Button>
+                        {/* {videoKey && <a href={`https://www.youtube.com/watch?v=${videoKey}`}></a>} */}
+                    </Link>
+                    {/* <iframe width="560" height="315" src={`https://www.youtube.com/watch?v=${videoKey}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> */}
                 </div>
-
             </div>
-            <img src={`${imageUrl}${film.backdrop_path}`} alt="Poster" className="p-3" />
         </>
     );
 }
