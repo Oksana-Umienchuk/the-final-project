@@ -1,7 +1,9 @@
 // import { useEffect, useState } from "react";
 // import { Link } from "react-router-dom";
 
-// import { useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
+
+
 // import { Pagination } from "@mui/material";
 
 // import RatingFilm from "../components/RatingFilm";
@@ -9,6 +11,10 @@
 // const imagesUrl = 'https://image.tmdb.org/t/p/w500'; //шлях до картинки
 
 function Search() {
+
+    const [searchParams] = useSearchParams();
+    const searchValue = searchParams.get('search');
+    console.log(searchValue);
     //     // const [page, setPage] = useState(1);
     //     // const [currentPage, setCurrentPage] = useState(1);
     //     // const [totalPages, setTotalPages] = useState(1);
@@ -65,28 +71,28 @@ function Search() {
     return (
         // <>
         <h1 className="text-5xl text-zinc-950 py-4">Search Results</h1>
-        //             <div className="flex flex-wrap items-start">
-        //                 {filmList.map(
-        //                     (film) => {
-        //                         return (
-        //                             <div key={film.id} className="px-3 py-2 w-1/3 h-full">
-        //                                 <Link to={`/search/${film.id}`} className="flex flex-col h-full ">
-        //                                     <img src={`${imagesUrl}${film.poster_path}`} alt="Poster" className="mb-2 shadow-slate-600 shadow-lg" />
-        //                                     <RatingFilm rating={film.vote_average} className="my-2 flex justify-center" />
-        //                                     <p>Rating: {film.vote_average}</p>
-        //                                     <h2 className="text-xl p-3 bold">{film.title}</h2>
-        //                                 </Link>
-        //                             </div>
-        //                         );
-        //                     }
-        //                 )}
-        //             </div >
-        //             <div>
-        //                 <Pagination className="flex justify-center" count={totalPages} color="primary" onChange={(e, newPage) => {
-        //                     setPage(newPage);
-        //                 }} />
-        //             </div>
-        //         </>
+        // <div className="flex flex-wrap items-start">
+        //     {filmList.map(
+        //         (film) => {
+        //             return (
+        //                 <div key={film.id} className="px-3 py-2 w-1/3 h-full">
+        //                     <Link to={`/search/${film.id}`} className="flex flex-col h-full ">
+        //                         <img src={`${imagesUrl}${film.poster_path}`} alt="Poster" className="mb-2 shadow-slate-600 shadow-lg" />
+        //                         <RatingFilm rating={film.vote_average} className="my-2 flex justify-center" />
+        //                         <p>Rating: {film.vote_average}</p>
+        //                         <h2 className="text-xl p-3 bold">{film.title}</h2>
+        //                     </Link>
+        //                 </div>
+        //             );
+        //         }
+        //     )}
+        // </div >
+        // <div>
+        //     <Pagination className="flex justify-center" count={totalPages} color="primary" onChange={(e, newPage) => {
+        //         setPage(newPage);
+        //     }} />
+        // </div>
+        // </>
     );
 }
 

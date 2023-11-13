@@ -4,11 +4,13 @@ import App from './App.jsx';
 import './index.css';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import NotFoundPage from './pages/NotFoundPage.jsx';
+import ErrorPage from './pages/ErrorPage.jsx';
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <App />,
+        errorElement: <ErrorPage />,
         children: [
             {
                 path: '/',
@@ -36,6 +38,10 @@ const router = createBrowserRouter([
         path: '*',
         element: <NotFoundPage />
         // lazy: () => import('./pages/NotFoundPage.jsx')
+    },
+    {
+        path: '/404',
+        lazy: () => import('./pages/ErrorPage.jsx')
     }
 ]);
 
