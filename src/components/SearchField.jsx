@@ -13,7 +13,6 @@ function SearchField() {
 
         navigate(`/search?search=${searchValue}`);
         console.log(`/search?search=${searchValue}`);
-
     }
 
     return (

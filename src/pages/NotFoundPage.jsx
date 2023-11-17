@@ -16,10 +16,10 @@ function NotFoundPage() {
     return (
         <>
             <h1>404 Not Found Page</h1>
-            <button className="bg-blue-900 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            <button className="bg-amber-400 hover:bg-amber-900 text-white font-bold py-2 px-4 rounded "
                 onClick={() => {
                     navigate(-1); //адреса, на яку буде повертатися при натисканны на кнопку Go Home
-                }}>Go Home</button>
+                }}>Go Back</button>
         </>
     );
 }

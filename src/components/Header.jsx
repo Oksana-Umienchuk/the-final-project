@@ -17,6 +17,7 @@ function Header() {
                     <nav className="menu flex justify-center py-4">
                         <NavLink className={getNavClasses} to="/">Home</NavLink>
                         <NavLink className={getNavClasses} to="/films">Films</NavLink>
+                        <NavLink className={getNavClasses} to="/favourites">Favourites</NavLink>
                     </nav>
                     <SearchField />
                 </div>
