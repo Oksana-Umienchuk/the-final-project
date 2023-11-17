@@ -4,17 +4,21 @@
 
 /* header */
 .nav-active {
-    @apply bg-blue-800 text-white rounded;
+    @apply text-amber-400 underline;
 }
 
 /*slider*/
 
 .swiper-button-next::after {
-    color: bg-blue-800;
+    color: rgb(251 191 36);
 }
 
 .swiper-button-prev::after {
-    color: bg-blue-800;
+    color: rgb(251 191 36);
+}
+
+.swiper-pagination-bullet-active {
+    color: rgb(251 191 36);
 }
 
 /* input#outlined-basic {
@@ -23,4 +27,8 @@
 
 #root {
     padding: 0;
+}
+
+body {
+    background-color: rgb(8 51 68);
 }

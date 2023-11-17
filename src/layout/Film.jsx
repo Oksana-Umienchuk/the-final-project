@@ -85,22 +85,26 @@ function Film() {
 
     return (
         <>
-            <div className="">
-
-                <img src={`${imageUrl}${film.backdrop_path}`} alt="Poster" className="p-3" />
-                <div className="p-2 text-1xl text-left">
-                    <h1 className="text-4xl text-zinc-950 py-4 font-bold">{film.original_title}</h1>
-                    <div className="flex p-1">
-                        <p className="mr-2">Rating:</p>
+            <div className="relative">
+                <img src={`${imageUrl}${film.backdrop_path}`} alt="Poster" />
+                <div className="p-2 m-2 text-xl text-left text-white">
+                    <h1 className="text-4xl py-4 font-bold text-white">{film.original_title}</h1>
+                    <div className="flex item-center">
+                        <p className="mr-2 font-bold">Rating:</p>
                         <RatingFilm rating={film.vote_average} />
                         <p className="ml-2">{film.vote_average}</p>
                     </div>
                     <p className="my-3">{film.overview}</p>
-                    <p className="my-3">Release Date: {film.release_date}</p>
+                    <p className="my-3 font-bold">Release Date: {film.release_date}</p>
                     <p className="my-3">ID: {params.id}</p>
-                    <Button variant="contained" className='p-2 m-3 bg-blue-800' onClick={() => { setIsShowVideo(!isShowVideo); }}>Watch Trailer On YouTube</Button>
-                    {/* <iframe width="560" height="315" src={`https://www.youtube.com/embed/${videoKey}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> */}
-                    {isShowVideo && <VideoPlayer videoKey={videoKey} />}
+                    <Button
+                        variant="contained"
+                        className='p-2 my-5 bg-blue-800 z-10'
+                        onClick={() => { setIsShowVideo(!isShowVideo); }}
+                    >
+                        {isShowVideo ? 'Hide Video' : 'Watch Trailer On YouTube'}
+                    </Button>
+                    {isShowVideo && <VideoPlayer videoKey={videoKey} width={560} height={315} className="video-container" />}
                 </div>
             </div>
         </>

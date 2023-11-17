@@ -2,6 +2,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, A11y } from 'swiper/modules';
 
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+
 import { Button } from '@mui/material';
 
 import 'swiper/css';
@@ -9,33 +11,37 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
-import { useEffect, useState } from 'react';
+
+import getData from '../api/getData';
 
 const urlImage = 'https://image.tmdb.org/t/p/original';
+const url = `/movie/upcoming?language=en-US&page=1`;
 
 function Slider() {
 
-    const [slides, setSlides] = useState([]);
+    const [slides, setSlides] = useState(() => {
+        const data = JSON.parse(
+            window
+                .localStorage
+                .getItem(url)
+        );
+
+        return data ? data.results : [];
+    });
 
     useEffect(() => {
-        const url = `https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1`;
 
-        async function getFilms() {
-            const options = {
-                method: 'GET',
-                headers: {
-                    accept: 'application/json',
-                    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MTg2ZmIzZmQ3YzQyMjI0ZWQ0OTJhZjU5YzE5YmM1NyIsInN1YiI6IjY1NGJkOWExMjg2NmZhMDBjNDI2NTU3ZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.z7_oL62CSIuSYXlzKhEK8WnK1EQFT-u1zlMeXXqeMvE'
-                }
-            };
+        async function getSlider() {
 
-            const response = await fetch(url, options);
-            const data = await response.json();
+            const data = await getData(url);
 
-            console.log(data.results);
+            window.localStorage.setItem(
+                url,
+                JSON.stringify(data)
+            );
             setSlides(data.results);
         }
-        getFilms();
+        getSlider();
 
     }, []);
 
@@ -55,12 +61,18 @@ function Slider() {
                 {slides.map((slide) => (
                     <SwiperSlide key={slide.backdrop_path} className="relative w-screen">
                         <img src={`${urlImage}${slide.backdrop_path}`} alt={slide.title} className="w-screen" />
-                        <Link to={`/films/${slide.id}`} className="absolute z-10 bottom-5">
-                            <div className="bg-white opacity-60 p-5 m-10 rounded-lg">
-                                <h2 className="text-4xl p-3 font-bold m-3">{slide.title}</h2>
-                                <p className="text-xl p-2 m-3">{slide.overview}</p>
+                        <Link to={`/films/${slide.id}`} className="absolute z-10 bottom-10 right-0 left-0">
+                            <div className="bg-white opacity-60 m-5 rounded-lg flex align-end">
+                                <h2 className="text-4xl p-1 font-bold m-3">{slide.title}</h2>
+                                {/* <p className="text-xl p-2 m-3">{slide.overview}</p> */}
                             </div>
-                            <Button variant="contained" className='p-2 m-3 bg-blue-800'>Watch</Button>
+                            <Button variant="contained" className="p-2 m-3" sx={{
+                                '.MuiButton-root': {
+                                    color: 'rgb(8 51 68)',
+                                    backgroundColor: 'rgb(251 191 36)',
+                                }
+                            }}
+                            >Watch</Button>
                         </Link>
                     </SwiperSlide >
                 ))}

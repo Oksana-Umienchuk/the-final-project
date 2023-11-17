@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import YouTube from 'react-youtube';
 
-function VideoPlayer({ videoKey }) {
+function VideoPlayer({ videoKey, width, height }) {
     // const [opts] = useState({
     //     height: '390',
     //     width: '640',
@@ -17,7 +17,8 @@ function VideoPlayer({ videoKey }) {
 
     return (
         // <YouTube videoId={videoKey} opts={opts} onReady={onReady} />
-        <iframe width="560" height="315" src={`https://www.youtube.com/embed/${videoKey}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        // <iframe width="560" height="315" src={`https://www.youtube.com/embed/${videoKey}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <iframe className="absolute" width={width} height={height} src={`https://www.youtube.com/embed/${videoKey}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     );
 }
 
