@@ -78,7 +78,6 @@ function Film() {
                 .catch(err => console.error(err));
         },
         [params]
-
     );
 
     if (!film) return <p>Loading...</p>;
@@ -104,7 +103,7 @@ function Film() {
                     >
                         {isShowVideo ? 'Hide Video' : 'Watch Trailer On YouTube'}
                     </Button>
-                    {isShowVideo && <VideoPlayer videoKey={videoKey} width={560} height={315} className="video-container" />}
+                    {isShowVideo && <VideoPlayer videoKey={videoKey} className="video-container" />}
                 </div>
             </div>
         </>

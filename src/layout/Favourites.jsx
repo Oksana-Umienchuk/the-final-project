@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FilmList from "../components/FilmList";
+import getData from "../api/getData";
 
 function Favourites() {
 
@@ -16,10 +17,9 @@ function Favourites() {
     );
 
 
-
     return (
         <>
-            <h1 className="text-5xl text-white py-4">Favourites</h1>
+            <h1 className="text-5xl  text-cyan-950 py-4">Favourites</h1>
             <FilmList
                 filmList={filmList} />
         </>

@@ -4,12 +4,8 @@ import { Link } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
 import getData from "../api/getData";
 
-import RatingFilm from "../components/RatingFilm";
-import noimage from "../assets/noimage.jpg";
 import PaginationList from "../components/PaginationList";
 import FilmList from "../components/FilmList";
-
-const imagesUrl = 'https://image.tmdb.org/t/p/w500';
 
 function Search() {
 
@@ -22,7 +18,6 @@ function Search() {
     const [totalPages, setTotalPages] = useState(1);
 
     const urlSearch = `/search/movie?query=${searchValue}&include_adult=false&language=en-US&page=${page}`;
-
 
     const [filmList, setFilmList] = useState(
         () => {

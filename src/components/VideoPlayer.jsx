@@ -1,25 +1,17 @@
-import { useState } from 'react';
-import YouTube from 'react-youtube';
+import PropTypes from 'prop-types';
 
-function VideoPlayer({ videoKey, width, height }) {
-    // const [opts] = useState({
-    //     height: '390',
-    //     width: '640',
-    //     playerVars: {
-
-    //         autoplay: 1,
-    //     },
-    // });
-    // function onReady(event) {
-    //     // access to player in all event handlers via event.target
-    //     event.target.pauseVideo();
-    // }
+function VideoPlayer({ videoKey }) {
 
     return (
-        // <YouTube videoId={videoKey} opts={opts} onReady={onReady} />
-        // <iframe width="560" height="315" src={`https://www.youtube.com/embed/${videoKey}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        <iframe className="absolute" width={width} height={height} src={`https://www.youtube.com/embed/${videoKey}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <div className="relative">
+            <div className="absolute w-full">
+                <div className='aspect-video w-full'>
+                    <iframe className="w-full h-full" src={`https://www.youtube.com/embed/${videoKey}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+                </div>
+            </div>
+        </div>
     );
 }
 
+VideoPlayer.propTypes = { videoKey: PropTypes.string, width: PropTypes.number, height: PropTypes.number, };
 export default VideoPlayer;

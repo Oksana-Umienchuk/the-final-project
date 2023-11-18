@@ -1,14 +1,9 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 
-import RatingFilm from "../components/RatingFilm";
 import getData from "../api/getData";
 
-import Favourites from "../components/Favourites";
 import PaginationList from "../components/PaginationList";
 import FilmList from "../components/FilmList";
-
-const imagesUrl = 'https://image.tmdb.org/t/p/w500';
 
 function Films() {
 

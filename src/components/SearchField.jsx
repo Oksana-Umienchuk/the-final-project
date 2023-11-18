@@ -16,7 +16,7 @@ function SearchField() {
     }
 
     return (
-        <form method="get" onSubmit={searchHandler} action="search" className="">
+        <form method="get" onSubmit={searchHandler} action="search" className="border-amber-600">
             <TextField
                 size="small"
                 label="Search"
@@ -26,11 +26,21 @@ function SearchField() {
                 name="search"
                 variant="outlined"
                 color="warning" />
-            <button type="submit" className="p-3 text-sm z-1 relative font-medium text-white  rounded-r-lg hover:bg-amber-400 hover:cyan-950 focus:ring-4 focus:outline-none focus:bg-amber-400">
-                <svg className="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+            <button type="submit"
+                className="p-3 text-sm z-1 relative font-medium text-cyan-950 rounded-r-lg hover:bg-amber-600 focus:ring-4 focus:outline-none focus:bg-amber-700">
+                <svg
+                    className="w-4 h-4"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 20 20">
+                    <path
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                 </svg>
-                <span className="sr-only">Search</span>
+                <span className="sr-only text-amber-600">Search</span>
             </button>
         </form>
     );
