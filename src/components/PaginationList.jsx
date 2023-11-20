@@ -16,9 +16,10 @@ function PaginationList({ totalPages, setPage }) {
                     backgroundColor: 'rgba(251 191 36, .2)',
                 },
                 '.Mui-selected': {
-                    backgroundColor: 'rgba(251 191 36, .3) !important',
+                    backgroundColor: 'rgba(217 119 6) !important',
+                    opacity: .78,
                     // pointerEvents: 'none',
-                    color: 'rgb(8 51 68)',
+                    color: 'white',
                 },
                 '.Mui-selected:hover': {
                     backgroundColor: 'rgb(251 191 36)',

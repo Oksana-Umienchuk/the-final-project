@@ -37,8 +37,9 @@ function FilmList({ filmList }) {
 
     console.log(favoritesIdList);
 
+
     function addToFavorites(film) {
-        //перевірити по id
+        film.id
 
         setFavoritesList(
             (currentValue) => {
@@ -51,6 +52,7 @@ function FilmList({ filmList }) {
             }
         );
     }
+    console.log(favoritesList);
 
     return (
         <div className="flex flex-wrap items-start relative">
@@ -59,20 +61,27 @@ function FilmList({ filmList }) {
                     const isFavourite = favoritesIdList[film.id];
                     const imagePath = film.poster_path ? `${imagesUrl}${film.poster_path}` : noimage;
                     return (
-                        <div key={film.id} className=" relative px-3 py-2 w-1/2 md:w-1/3 sm:w-1/4 xs:w-1/5 xxs:w-1/2 h-full">
+                        <div key={film.id} className="relative px-3 py-2 w-1/5 h-full">
                             <Link to={`/films/${film.id}`}
                                 className="flex flex-col">
                                 <div>
-                                    <img src={imagePath} alt="Poster"
-                                        className="mb-2 shadow-slate-600 shadow-lg" />
+                                    <img src={imagePath}
+                                        alt="Poster"
+                                        className="rounded-lg mb-2 shadow-slate-600 shadow-lg aspect-auto object-cover object-center hover:border-white hover:border-4" />
                                 </div>
-                                <RatingFilm rating={film.vote_average}
+                                <RatingFilm
+                                    rating={film.vote_average}
                                     className="my-2" />
-                                <p className="text-white left-0">Rating: {film.vote_average}</p>
+                                <p className="text-white left-0">Rating:&nbsp;
+                                    <span>
+                                        {Number(film.vote_average).toFixed(1)}
+                                    </span>
+                                </p>
                             </Link>
-                            <div className="absolute top-0 right-0">
+                            <div className="absolute top-2 right-1 border-amber-600">
                                 <FavouritesButton
-                                    className="" isFavourite={isFavourite} onClick={() => { addToFavorites(film); }} />
+                                    isFavourite={isFavourite}
+                                    onClick={() => { addToFavorites(film); }} />
                             </div>
                         </div>
                     );

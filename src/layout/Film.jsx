@@ -5,7 +5,8 @@ import { Button } from '@mui/material';
 import RatingFilm from "../components/RatingFilm";
 import VideoPlayer from "../components/VideoPlayer";
 
-const imageUrl = 'https://image.tmdb.org/t/p/original';
+import { urlImageOriginal } from '../config/config';
+import Actors from "../components/actors/ActorsList";
 
 function Film() {
     const params = useParams();
@@ -83,30 +84,39 @@ function Film() {
     if (!film) return <p>Loading...</p>;
 
     return (
-        <>
+        <div className="pb-5">
             <div className="relative">
-                <img src={`${imageUrl}${film.backdrop_path}`} alt="Poster" />
-                <div className="p-2 m-2 text-xl text-left text-white">
-                    <h1 className="text-4xl py-4 font-bold text-white">{film.original_title}</h1>
+                <img src={`${urlImageOriginal}${film.backdrop_path}`} alt="Poster" className="object-cover" />
+                <div className="p-4 m-5 text-xl text-left text-white bg-cyan-800 rounded-md">
+                    <h1 className="text-4xl py-3 my-2 font-bold text-amber-600">{film.original_title}</h1>
                     <div className="flex item-center">
                         <p className="mr-2 font-bold">Rating:</p>
-                        <RatingFilm rating={film.vote_average} />
-                        <p className="ml-2">{film.vote_average}</p>
+                        <div className="">
+                            <RatingFilm rating={film.vote_average} />
+                        </div>
+                        <p className="ml-2">{
+                            Number(film.vote_average).toFixed(1)
+                        }</p>
                     </div>
-                    <p className="my-3">{film.overview}</p>
-                    <p className="my-3 font-bold">Release Date: {film.release_date}</p>
+                    <p className="my-3 text-base">{film.overview}</p>
+                    <p className="my-3">{'Release Date:' + ' '}
+                        <span>{film.release_date}</span>
+                    </p>
                     <p className="my-3">ID: {params.id}</p>
-                    <Button
-                        variant="contained"
-                        className='p-2 my-5 bg-blue-800 z-10'
-                        onClick={() => { setIsShowVideo(!isShowVideo); }}
-                    >
-                        {isShowVideo ? 'Hide Video' : 'Watch Trailer On YouTube'}
-                    </Button>
+                    <div className="my-3">
+                        <Button
+                            variant="contained"
+                            className='p-2 my-5 bg-blue-800 z-10'
+                            onClick={() => { setIsShowVideo(!isShowVideo); }}
+                        >
+                            {isShowVideo ? 'Hide Video' : 'Trailer'}
+                        </Button>
+                    </div>
                     {isShowVideo && <VideoPlayer videoKey={videoKey} className="video-container" />}
+                    <Actors filmId={film.id} />
                 </div>
             </div>
-        </>
+        </div>
     );
 }
 

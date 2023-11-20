@@ -32,12 +32,19 @@ const router = createBrowserRouter([
                 path: '/search',
                 lazy: () => import('./layout/Search.jsx')
             },
+            {
+                path: '/actors',
+                lazy: () => import('./layout/Actors.jsx')
+            },
+            {
+                path: '/actors/:id',
+                lazy: () => import('./layout/Actor.jsx')
+            }
         ]
     },
     {
         path: '*',
         element: <NotFoundPage />
-        // lazy: () => import('./pages/NotFoundPage.jsx')
     },
     {
         path: '/404',

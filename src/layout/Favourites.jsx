@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import FilmList from "../components/FilmList";
-import getData from "../api/getData";
+
+const favouritesListKey = 'favouritesList';
 
 function Favourites() {
 
@@ -9,19 +10,19 @@ function Favourites() {
             const data = JSON.parse(
                 window
                     .localStorage
-                    .getItem('FavouritesList')
+                    .getItem(favouritesListKey)
             );
 
             return data ? data : [];
         }
     );
 
-
     return (
         <>
             <h1 className="text-5xl  text-cyan-950 py-4">Favourites</h1>
-            <FilmList
-                filmList={filmList} />
+            {
+                filmList.length ? <FilmList filmList={filmList} /> : <p className="text-4xl py-3 my-2 font-bold text-amber-600">Not Favourites Films</p>
+            }
         </>
     );
 }

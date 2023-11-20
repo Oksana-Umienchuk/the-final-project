@@ -12,7 +12,6 @@ function SearchField() {
         e.preventDefault();
 
         navigate(`/search?search=${searchValue}`);
-        console.log(`/search?search=${searchValue}`);
     }
 
     return (

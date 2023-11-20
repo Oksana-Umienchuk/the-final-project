@@ -9,16 +9,35 @@
 
 /*slider*/
 
+.swiper-button-next {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 2rem;
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+}
+
 .swiper-button-next::after {
     color: rgb(217 119 6);
+
+}
+
+.swiper-button-prev {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 2rem;
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
 }
 
 .swiper-button-prev::after {
     color: rgb(217 119 6);
+    opacity: 1;
 }
 
 .swiper-pagination-bullet-active {
     color: rgb(217 119 6);
+
 }
 
 #root {
@@ -35,4 +54,9 @@ body {
 
 .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
     border-color: rgb(217 119 6);
+}
+
+.swiper-scrollbar>.swiper-scrollbar-drag {
+    background-color: rgb(217 119 6);
+    opacity: .9;
 }
