@@ -37,20 +37,29 @@ function FilmList({ filmList }) {
 
     console.log(favoritesIdList);
 
-
     function addToFavorites(film) {
-        film.id
 
-        setFavoritesList(
-            (currentValue) => {
-                const newFavouritesList = [
-                    ...currentValue,
-                    film
-                ];
-                window.localStorage.setItem(favouritesListKey, JSON.stringify(newFavouritesList));
-                return newFavouritesList;
-            }
-        );
+        if (film.id in favoritesIdList) {
+            console.log(`ID ${film.id} є у списку улюблених`);
+
+            // delete favoritesIdList.film.id;
+            const newFavouritesList = favoritesList.filter((item) => item.id !== film.id);
+            window.localStorage.setItem(favouritesListKey, JSON.stringify(newFavouritesList));
+            return setFavoritesList(newFavouritesList);
+        } else {
+            console.log(`ID ${film.id} відсутній у списку улюблених`);
+
+            setFavoritesList(
+                (currentValue) => {
+                    const newFavouritesList = [
+                        ...currentValue,
+                        film
+                    ];
+                    window.localStorage.setItem(favouritesListKey, JSON.stringify(newFavouritesList));
+                    return newFavouritesList;
+                }
+            );
+        }
     }
     console.log(favoritesList);
 
@@ -60,6 +69,7 @@ function FilmList({ filmList }) {
                 (film) => {
                     const isFavourite = favoritesIdList[film.id];
                     const imagePath = film.poster_path ? `${imagesUrl}${film.poster_path}` : noimage;
+
                     return (
                         <div key={film.id} className="relative px-3 py-2 w-1/5 h-full">
                             <Link to={`/films/${film.id}`}

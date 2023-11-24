@@ -22,5 +22,8 @@ function FavouritesButton({ isFavourite, onClick }) {
     );
 }
 
-FavouritesButton.propTypes = { isFavourite: PropTypes.bool, onClick: PropTypes.func };
+FavouritesButton.propTypes = {
+    isFavourite: PropTypes.bool,
+    onClick: PropTypes.func
+};
 export default FavouritesButton;

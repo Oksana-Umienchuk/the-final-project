@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FilmList from "../components/FilmList";
 
 const favouritesListKey = 'favouritesList';
@@ -16,6 +16,13 @@ function Favourites() {
             return data ? data : [];
         }
     );
+
+    useEffect(() => {
+        async function getFilms() {
+
+        }
+        getFilms()
+    }, [filmList]);
 
     return (
         <>
