@@ -112,7 +112,8 @@ function Film() {
                             {isShowVideo ? 'Hide Video' : 'Trailer'}
                         </Button>
                     </div>
-                    {isShowVideo && <VideoPlayer videoKey={videoKey} className="video-container" />}
+                    {isShowVideo && <VideoPlayer videoKey={videoKey}
+                        className="video-container" />}
                     <Actors filmId={film.id} />
                 </div>
             </div>

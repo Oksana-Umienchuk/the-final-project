@@ -36,7 +36,8 @@ function ActorsList({ filmId }) {
                         return (
                             <div key={actor.id} className="relative w-1/6 flex justify-center items-center">
                                 <Link to={`/actors/${actor.id}`} className="mx-2 my-3">
-                                    <h3 className="text-base mb-2 hover:underline">{actor.name}</h3>
+                                    <h3 className="text-base hover:underline">{actor.name}</h3>
+                                    <span className="text-sm bold text-amber-600 mb-1">{actor.character}</span>
                                     <img src={(actor.profile_path ? urlImageOriginal + actor.profile_path : noimage)}
                                         alt={`Actors ${actor.name}`}
                                         className="rounded-lg shadow-lg object-cover object-center hover:border-white hover:border-4 aspect-square" />

@@ -16,6 +16,7 @@ function ActorsPage({ actorsList }) {
                                     <img src={`${urlImageOriginal}${actor.profile_path}`}
                                         alt={`Actors ${actor.name}`}
                                         className="rounded-lg shadow-lg object-cover object-center hover:border-white hover:border-4" />
+                                    <h4 className="text-base text-white mb-2 hover:underline">{actor.character}</h4>
                                 </Link>
                             </div >
                         );

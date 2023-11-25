@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
 
 import RatingFilm from "./RatingFilm";
 
@@ -7,68 +6,26 @@ import noimage from "../assets/noimage.jpg";
 
 import PropTypes from 'prop-types';
 import FavouritesButton from "./FavouritesButton";
+import { urlImage } from "../config/config";
 
-const imagesUrl = 'https://image.tmdb.org/t/p/w500';
-const favouritesListKey = 'favouritesList';
-
-function FilmList({ filmList }) {
-
-    const [favoritesList, setFavoritesList] = useState(
-        () => {
-            const data = JSON.parse(
-                window
-                    .localStorage
-                    .getItem(favouritesListKey)
-            );
-
-            return data ? data : [];
-        }
-    );
+function FilmList({ filmList, addToFavorites }) {
 
     const favoritesIdList = (() => {
         const valueFilm = {};
-        if (Array.isArray(favoritesList) && favoritesList.length) {
-            for (const film of favoritesList) {
+        if (Array.isArray(filmList) && filmList.length) {
+            for (const film of filmList) {
                 valueFilm[film.id] = true;
             }
         }
         return valueFilm;
     })();
 
-    console.log(favoritesIdList);
-
-    function addToFavorites(film) {
-
-        if (film.id in favoritesIdList) {
-            console.log(`ID ${film.id} є у списку улюблених`);
-
-            // delete favoritesIdList.film.id;
-            const newFavouritesList = favoritesList.filter((item) => item.id !== film.id);
-            window.localStorage.setItem(favouritesListKey, JSON.stringify(newFavouritesList));
-            return setFavoritesList(newFavouritesList);
-        } else {
-            console.log(`ID ${film.id} відсутній у списку улюблених`);
-
-            setFavoritesList(
-                (currentValue) => {
-                    const newFavouritesList = [
-                        ...currentValue,
-                        film
-                    ];
-                    window.localStorage.setItem(favouritesListKey, JSON.stringify(newFavouritesList));
-                    return newFavouritesList;
-                }
-            );
-        }
-    }
-    console.log(favoritesList);
-
     return (
         <div className="flex flex-wrap items-start relative">
             {filmList.map(
                 (film) => {
                     const isFavourite = favoritesIdList[film.id];
-                    const imagePath = film.poster_path ? `${imagesUrl}${film.poster_path}` : noimage;
+                    const imagePath = film.poster_path ? `${urlImage}${film.poster_path}` : noimage;
 
                     return (
                         <div key={film.id} className="relative px-3 py-2 w-1/5 h-full">
@@ -101,6 +58,10 @@ function FilmList({ filmList }) {
     );
 }
 
-FilmList.propTypes = { filmList: PropTypes.array };
+FilmList.propTypes = {
+    filmList: PropTypes.array,
+    favoritesIdList: PropTypes.object,
+    addToFavorites: PropTypes.func
+};
 
 export default FilmList;
