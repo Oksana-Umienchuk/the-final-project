@@ -60,3 +60,8 @@ body {
     background-color: rgb(217 119 6);
     opacity: .9;
 }
+
+/* Raiting */
+.MuiSvgIcon-root path {
+    fill: rgb(217 119 6);
+}
