@@ -8,17 +8,7 @@ import PropTypes from 'prop-types';
 import FavouritesButton from "./FavouritesButton";
 import { urlImage } from "../config/config";
 
-function FilmList({ filmList, addToFavorites }) {
-
-    const favoritesIdList = (() => {
-        const valueFilm = {};
-        if (Array.isArray(filmList) && filmList.length) {
-            for (const film of filmList) {
-                valueFilm[film.id] = true;
-            }
-        }
-        return valueFilm;
-    })();
+function FilmList({ filmList, favoritesIdList, addToFavorites }) {
 
     return (
         <div className="flex flex-wrap items-start relative">
@@ -28,13 +18,13 @@ function FilmList({ filmList, addToFavorites }) {
                     const imagePath = film.poster_path ? `${urlImage}${film.poster_path}` : noimage;
 
                     return (
-                        <div key={film.id} className="relative px-3 py-2 w-1/5 h-full">
+                        <div key={film.id} className="relative px-3 py-2 w-1/5">
                             <Link to={`/films/${film.id}`}
                                 className="flex flex-col">
-                                <div>
+                                <div className="h-full w-full">
                                     <img src={imagePath}
                                         alt="Poster"
-                                        className="rounded-lg mb-2 shadow-slate-600 shadow-lg aspect-auto object-cover object-center hover:border-white hover:border-4" />
+                                        className="rounded-lg mb-2 shadow-slate-600 shadow-lg aspect-[2/3] object-cover object-center hover:border-white hover:border-4 h-full w-full" />
                                 </div>
                                 <RatingFilm
                                     rating={film.vote_average}

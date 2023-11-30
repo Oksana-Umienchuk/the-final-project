@@ -5,6 +5,7 @@ import getData from "../api/getData";
 
 import PaginationList from "../components/PaginationList";
 import FilmList from "../components/FilmList";
+import useFavorites from "../hooks/useFavorites";
 
 function Search() {
 
@@ -50,11 +51,15 @@ function Search() {
 
     }, [page, currentPage, urlSearch]);
 
+    const [, favoritesIdList, addToFavorites] = useFavorites();
+
     return (
         <>
             <h1 className="text-5xl text-cyan-950 py-4">Search Results</h1>
             <FilmList
-                filmList={filmList} />
+                filmList={filmList}
+                addToFavorites={addToFavorites}
+                favoritesIdList={favoritesIdList} />
             <div>
                 <PaginationList totalPages={totalPages} setPage={setPage} />
             </div>

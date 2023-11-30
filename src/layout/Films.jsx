@@ -4,6 +4,7 @@ import getData from "../api/getData";
 
 import PaginationList from "../components/PaginationList";
 import FilmList from "../components/FilmList";
+import useFavorites from "../hooks/useFavorites";
 
 function Films() {
 
@@ -45,11 +46,16 @@ function Films() {
 
     }, [page, currentPage]);
 
+    const [, favoritesIdList, addToFavorites] = useFavorites();
+
     return (
         <>
             <h1 className="text-5xl text-cyan-950 py-4">Films</h1>
             <FilmList
-                filmList={filmList} />
+                filmList={filmList}
+                addToFavorites={addToFavorites}
+                favoritesIdList={favoritesIdList}
+            />
             <div>
                 <PaginationList totalPages={totalPages} setPage={setPage} />
             </div>

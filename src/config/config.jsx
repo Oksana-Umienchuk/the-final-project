@@ -10,3 +10,4 @@ export const urlTrendingWeek = `/trending/movie/week?language=en-US`;
 // export const urlActors = `/movie/${filmId}/credits?language=en-US`;
 
 // export const urlActorsListPage = `/person/popular?language=en-US&page=${page}`;
+export const favouritesListKey = 'favouritesList';
