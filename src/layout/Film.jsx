@@ -1,35 +1,34 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Button } from '@mui/material';
 
 import RatingFilm from "../components/RatingFilm";
-import VideoPlayer from "../components/VideoPlayer";
+import VideoPlayer from "../components/video/VideoPlayer";
+import ActorsList from "../components/actors/ActorsList";
 
 import { urlImageOriginal } from '../config/config';
-import Actors from "../components/actors/ActorsList";
 
 function Film() {
     const params = useParams();
     const navigate = useNavigate();
-    const [isShowVideo, setIsShowVideo] = useState(false);
+    // const [isShowVideo, setIsShowVideo] = useState(false);
 
     console.log(params);
     const [film, setFilm] = useState(
         () => {
             return JSON.parse(
-                window.localStorage.getItem(`https://api.themoviedb.org/3/movie/${params.id}}?language=en-US`)
+                window.localStorage.getItem(`https://api.themoviedb.org/3/movie/${params.id}?language=en-US`)
             ) || null;
         }
     );
 
-    const [videoKey, setVideoKey] = useState(
+    // const [videoKey, setVideoKey] = useState(
 
-        () => {
-            return JSON.parse(
-                window.localStorage.getItem(`https://api.themoviedb.org/3/movie/${params.id}/videos?language=en-US`)
-            ) || '';
-        }
-    );
+    //     () => {
+    //         return JSON.parse(
+    //             window.localStorage.getItem(`https://api.themoviedb.org/3/movie/${params.id}/videos?language=en-US`)
+    //         ) || '';
+    //     }
+    // );
 
     useEffect(
         () => {
@@ -59,24 +58,24 @@ function Film() {
                 )
                 .catch(err => console.error(err));
 
-            fetch(`https://api.themoviedb.org/3/movie/${params.id}/videos?language=en-US`, options)
+            // fetch(`https://api.themoviedb.org/3/movie/${params.id}/videos?language=en-US`, options)
 
-                .then(response => response.json())
-                .then(
-                    (response) => {
-                        if (response.results.length > 0) {
-                            setVideoKey(response.results[0].key);
-                        } else {
-                            return;
-                        }
+            //     .then(response => response.json())
+            //     .then(
+            //         (response) => {
+            //             if (response.results.length > 0) {
+            //                 setVideoKey(response.results[0].key);
+            //             } else {
+            //                 return;
+            //             }
 
-                        window.localStorage.setItem(
-                            `https://api.themoviedb.org/3/movie/${params.id}/videos?language=en-US`,
-                            JSON.stringify(response)
-                        );
-                    }
-                )
-                .catch(err => console.error(err));
+            //             window.localStorage.setItem(
+            //                 `https://api.themoviedb.org/3/movie/${params.id}/videos?language=en-US`,
+            //                 JSON.stringify(response)
+            //             );
+            //         }
+            //     )
+            //     .catch(err => console.error(err));
         },
         [params]
     );
@@ -84,11 +83,11 @@ function Film() {
     if (!film) return <p>Loading...</p>;
 
     return (
-        <div className="pb-5">
+        <div className="pb-5 max-w-[1100px] mx-auto">
             <div className="relative">
                 <img src={`${urlImageOriginal}${film.backdrop_path}`} alt="Poster" className="object-cover" />
-                <div className="p-4 m-5 text-xl text-left text-white bg-cyan-800 rounded-md">
-                    <h1 className="text-4xl py-3 my-2 font-bold text-amber-600">{film.original_title}</h1>
+                <div className="p-4 mt-4 text-xl text-left text-white bg-gray-900/80 rounded-md">
+                    <h2 className="text-4xl py-3 my-2 font-bold text-amber-600">{film.original_title}</h2>
                     <div className="flex item-center">
                         <p className="mr-2 font-bold">Rating:</p>
                         <div className="">
@@ -103,7 +102,7 @@ function Film() {
                         <span>{film.release_date}</span>
                     </p>
                     <p className="my-3">ID: {params.id}</p>
-                    <div className="my-3">
+                    {/* <div className="my-3">
                         <Button
                             variant="contained"
                             className='p-2 my-5 bg-blue-800 z-10'
@@ -111,10 +110,14 @@ function Film() {
                         >
                             {isShowVideo ? 'Hide Video' : 'Trailer'}
                         </Button>
-                    </div>
-                    {isShowVideo && <VideoPlayer videoKey={videoKey}
-                        className="video-container" />}
-                    <Actors filmId={film.id} />
+                    </div> */}
+                    {/* {isShowVideo && <VideoPlayer videoKey={videoKey}
+                        className="video-container" />} */}
+                    {/* <VideoPlayer videoKey={videoKey}
+                        className="video-container" /> */}
+                    <VideoPlayer videoId={film.id}
+                        className="video-container" />
+                    <ActorsList filmId={film.id} />
                 </div>
             </div>
         </div>

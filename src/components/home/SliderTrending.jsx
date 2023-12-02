@@ -37,7 +37,18 @@ function SliderTrending({ url }) {
             <Swiper
                 modules={[Navigation, Pagination, A11y, Scrollbar]}
                 spaceBetween={10}
-                slidesPerView={5}
+                slidesPerView={2}
+                breakpoints={{
+                    768: {
+                        slidesPerView: 3,
+                    },
+                    992: {
+                        slidesPerView: 4,
+                    },
+                    1024: {
+                        slidesPerView: 5,
+                    },
+                }}
                 autoplay={true}
                 navigation
                 // pagination={{ clickable: true }}

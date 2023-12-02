@@ -36,7 +36,7 @@ function Actors() {
 
     return (
         <>
-            <h1 className="text-5xl text-white py-4">Actors</h1>
+            <h1 className="text-5xl text-cyan-950 py-4">Actors</h1>
             <ActorsPage actorsList={actorsList} />
             <div>
                 <PaginationList totalPages={totalPages} setPage={setPage} />

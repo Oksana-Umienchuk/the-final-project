@@ -32,9 +32,9 @@ function Films() {
         async function getFilms() {
 
             const data = await getData(urlFilms);
-            // if (!data.results) return; //
+            // if (!data.results) return;
 
-            window.localStorage.setItem(urlFilms, JSON.stringify(data));
+            // window.localStorage.setItem(urlFilms, JSON.stringify(data));
             setFilmList(data.results);
             setTotalPages(Number(data.total_pages) > 500 ? 500 : Number(data.total_pages));
         }

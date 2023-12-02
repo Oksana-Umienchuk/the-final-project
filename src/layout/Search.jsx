@@ -11,7 +11,6 @@ function Search() {
 
     const [searchParams] = useSearchParams();
     const searchValue = searchParams.get('search');
-    console.log(searchValue);
 
     const [page, setPage] = useState(1);
     const [currentPage, setCurrentPage] = useState(1);
@@ -37,7 +36,6 @@ function Search() {
         async function getSearch() {
 
             const data = await getData(urlSearch);
-            console.log(data);
 
             window.localStorage.setItem(urlSearch, JSON.stringify(data));
             setFilmList(data.results);
