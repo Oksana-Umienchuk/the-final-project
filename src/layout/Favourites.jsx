@@ -11,8 +11,6 @@ function Favourites() {
         setListChanged(true);
     }, [favoritesList]);
 
-    console.log(listChanged);
-
     return (
         <>
             <h1 className="text-5xl  text-cyan-950 py-4">Favourites</h1>

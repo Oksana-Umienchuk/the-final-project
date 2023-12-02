@@ -3,8 +3,9 @@ import { useParams } from "react-router-dom";
 import getData from "../api/getData";
 import { urlImage } from "../config/config";
 import ImagesList from "../components/actors/imagesActors/ImagesList";
-import FilmsActors from "../components/actors/filmsActors/FilmsActors";
+// import FilmsActors from "../components/actors/filmsActors/FilmsActors";
 import useFavorites from "../hooks/useFavorites";
+import FilmList from "../components/FilmList";
 
 function Actor() {
     const paramsActorPage = useParams();
@@ -12,7 +13,7 @@ function Actor() {
     const urlActorImages = `/person/${paramsActorPage.id}/images`;
     const urlActorFilms = `/person/${paramsActorPage.id}/movie_credits?language=en-US`;
 
-    console.log(urlActorFilms);
+    // console.log(urlActorFilms);
     const [actorFile, setActorFile] = useState({});
     const [actorImage, setActorImage] = useState([]);
     const [actorVideo, setActorVideo] = useState([]);
@@ -51,8 +52,6 @@ function Actor() {
 
     }, [paramsActorPage]);
 
-    console.log(actorVideo);
-
     const [, favoritesIdList, addToFavorites] = useFavorites();
 
     return (
@@ -78,8 +77,7 @@ function Actor() {
                 </div>
                 <div className="bg-gray-900/80 p-5 rounded-md my-4">
                     <h2 className="text-3xl py-3 my-2 font-bold text-amber-600 text-center">Films</h2>
-                    <FilmsActors
-                        actorVideoList={actorVideo}
+                    <FilmList filmList={actorVideo}
                         addToFavorites={addToFavorites}
                         favoritesIdList={favoritesIdList} />
                 </div>

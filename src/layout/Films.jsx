@@ -23,7 +23,7 @@ function Films() {
             );
 
             setTotalPages(data ? data.total_pages : 1);
-            return data ? data.results : [];
+            return data && data.results ? data.results : [];
         }
     );
 
@@ -32,9 +32,8 @@ function Films() {
         async function getFilms() {
 
             const data = await getData(urlFilms);
-            // if (!data.results) return;
+            if (!data.results) return;
 
-            // window.localStorage.setItem(urlFilms, JSON.stringify(data));
             setFilmList(data.results);
             setTotalPages(Number(data.total_pages) > 500 ? 500 : Number(data.total_pages));
         }
@@ -47,6 +46,7 @@ function Films() {
     }, [page, currentPage]);
 
     const [, favoritesIdList, addToFavorites] = useFavorites();
+    console.log(typeof filmList);
 
     return (
         <>

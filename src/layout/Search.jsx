@@ -27,21 +27,22 @@ function Search() {
             );
 
             setTotalPages(data ? data.total_pages : 1);
-            return data ? data.results : [];
+            console.log(data);
+            return data && data.results ? data.results : [];
         }
     );
-
+    console.log(filmList);
     useEffect(() => {
 
         async function getSearch() {
 
             const data = await getData(urlSearch);
 
-            window.localStorage.setItem(urlSearch, JSON.stringify(data));
+            // window.localStorage.setItem(urlSearch, JSON.stringify(data));
             setFilmList(data.results);
             setTotalPages(data.total_pages);
         }
-        // console.log(filmList.length);
+        console.log(filmList.length);
         // if (!filmList.length || page !== currentPage) {
         getSearch();
         setCurrentPage(page);
@@ -50,7 +51,7 @@ function Search() {
     }, [page, currentPage, urlSearch]);
 
     const [, favoritesIdList, addToFavorites] = useFavorites();
-
+    console.log(filmList);
     return (
         <>
             <h1 className="text-5xl text-cyan-950 py-4">Search Results</h1>

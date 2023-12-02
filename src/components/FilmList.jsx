@@ -9,9 +9,10 @@ import FavouritesButton from "./FavouritesButton";
 import { urlImage } from "../config/config";
 
 function FilmList({ filmList, favoritesIdList, addToFavorites }) {
+    console.log(filmList);
 
     return (
-        <div className="flex flex-wrap items-start relative">
+        <div className="flex flex-wrap relative justify-center items-start">
             {filmList.map(
                 (film) => {
                     const isFavourite = favoritesIdList[film.id];

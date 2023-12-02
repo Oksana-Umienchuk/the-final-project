@@ -12,7 +12,6 @@ function Film() {
     const navigate = useNavigate();
     // const [isShowVideo, setIsShowVideo] = useState(false);
 
-    console.log(params);
     const [film, setFilm] = useState(
         () => {
             return JSON.parse(

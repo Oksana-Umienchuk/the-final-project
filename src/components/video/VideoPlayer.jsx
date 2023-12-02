@@ -5,7 +5,6 @@ import getData from '../../api/getData';
 function VideoPlayer({ videoId }) {
 
     const urlVideo = `/movie/${videoId}/videos?language=en-US`;
-    console.log(urlVideo);
 
     const [videosList, setVideosList] = useState([]);
 
@@ -27,7 +26,7 @@ function VideoPlayer({ videoId }) {
         (video) => video.type.toLocaleLowerCase() === 'trailer'
     );
 
-    console.log(videosList, trailerKey);
+    // console.log(videosList, trailerKey);
 
     if (!trailerKey) return null;
 

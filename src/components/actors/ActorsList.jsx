@@ -17,7 +17,7 @@ function ActorsList({ filmId }) {
         async function getActors() {
 
             const data = await getData(urlActors);
-            console.log(data);
+            // console.log(data);
             setActorsList(data.cast);
         }
         getActors();
