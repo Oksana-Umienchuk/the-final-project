@@ -10,29 +10,46 @@
 /*slider*/
 
 .swiper-button-next {
-    background-color: rgba(255, 255, 255, 0.5);
-    padding: 2rem;
-    height: 3rem;
-    width: 3rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    height: 17px;
+    width: 17px;
     border-radius: 50%;
+
+    @media (max-width: 767px) {
+        padding: 0;
+        height: auto;
+        width: auto;
+        border-radius: 0;
+        background-color: transparent;
+    }
 }
 
 .swiper-button-next::after {
-    color: rgb(217 119 6);
+    color: rgb(21 94 117);
+    opacity: .6;
 
 }
 
 .swiper-button-prev {
-    background-color: rgba(255, 255, 255, 0.5);
-    padding: 2rem;
-    height: 3rem;
-    width: 3rem;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 30px;
+    height: 17px;
+    width: 17px;
     border-radius: 50%;
+
+    @media (max-width: 767px) {
+        padding: 0;
+        height: auto;
+        width: auto;
+        border-radius: 0;
+        background-color: transparent;
+    }
 }
 
 .swiper-button-prev::after {
-    color: rgb(217 119 6);
-    opacity: 1;
+    color: rgb(21 94 117);
+    opacity: .6;
 }
 
 .swiper-pagination-bullet-active {
@@ -49,7 +66,7 @@ body {
 }
 
 .swiper-pagination-bullet-active {
-    background-color: rgb(217 119 6) !important;
+    background-color: rgb(21 94 117) !important;
 }
 
 .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
@@ -57,8 +74,8 @@ body {
 }
 
 .swiper-scrollbar>.swiper-scrollbar-drag {
-    background-color: rgb(217 119 6);
-    opacity: .9;
+    background-color: rgb(21 94 117);
+    opacity: .6;
 }
 
 /* Raiting */

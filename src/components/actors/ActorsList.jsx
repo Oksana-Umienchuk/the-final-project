@@ -37,7 +37,7 @@ function ActorsList({ filmId }) {
                         actorsList.slice(0, countActors).map(
                             (actor) => {
                                 return (
-                                    <div key={actor.id} className="flex my-2 w-1/2 xs:w-1/3 sm:w-1/4 md:w-1/5">
+                                    <div key={actor.id} className="flex my-2 w-1/2 xs:w-1/3 sm:w-1/4 md:w-1/5 items-start">
                                         <Link to={`/actors/${actor.id}`} className="mx-2 my-2 ">
                                             <img src={(actor.profile_path ? urlImageOriginal + actor.profile_path : noimage)}
                                                 alt={`Actors ${actor.name}`}

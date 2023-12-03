@@ -12,7 +12,6 @@ export default function useFavorites() {
 
             return data ? data : [];
         }
-
     );
 
     const favoritesIdList = (() => {
@@ -25,18 +24,14 @@ export default function useFavorites() {
         return valueFilm;
     })();
 
-    console.log(favoritesIdList);
-
     function addToFavorites(film) {
 
         if (film.id in favoritesIdList) {
-            console.log(`ID ${film.id} є у списку улюблених`);
 
             const newFavouritesList = favoritesList.filter((item) => item.id !== film.id);
             window.localStorage.setItem(favouritesListKey, JSON.stringify(newFavouritesList));
             return setFavoritesList(newFavouritesList);
         } else {
-            console.log(`ID ${film.id} відсутній у списку улюблених`);
 
             setFavoritesList(
                 (currentValue) => {
@@ -50,7 +45,6 @@ export default function useFavorites() {
             );
         }
     }
-    console.log(favoritesList);
 
     return [favoritesList, favoritesIdList, addToFavorites];
 }

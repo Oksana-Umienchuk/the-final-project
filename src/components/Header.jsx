@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import SearchField from "./SearchField";
 
-const navClass = "mr-4 text-cyan-950 font-bold py-2 px-4 rouded ";
+const navClass = "mr-4 text-cyan-950 font-bold py-2 px-4 rouded hover:underline";
 
 /*створення функції для визначення класу active
 */
