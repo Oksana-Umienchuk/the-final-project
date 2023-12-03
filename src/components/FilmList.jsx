@@ -5,11 +5,10 @@ import RatingFilm from "./RatingFilm";
 import noimage from "../assets/noimage.jpg";
 
 import PropTypes from 'prop-types';
-import FavouritesButton from "./FavouritesButton";
+import FavouritesButton from "./buttons/FavouritesButton";
 import { urlImage } from "../config/config";
 
 function FilmList({ filmList, favoritesIdList, addToFavorites }) {
-    console.log(filmList);
 
     return (
         <div className="flex flex-wrap relative justify-center items-start">
@@ -27,7 +26,7 @@ function FilmList({ filmList, favoritesIdList, addToFavorites }) {
                                         alt="Poster"
                                         className="rounded-lg mb-2 shadow-slate-600 shadow-lg aspect-[2/3] object-cover object-center hover:border-white hover:border-4 h-full w-full" />
                                 </div>
-                                <h2 className="truncate hover:text-clip hover:whitespace-normal text-white my-2 z-50">{film.original_title}</h2>
+                                <h2 className="text-ellipsis line-clamp-2 h-10 leading-tight text-white my-2 z-50">{film.original_title}</h2>
                                 <RatingFilm
                                     rating={film.vote_average}
                                     className="my-2" />

@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import getData from "../api/getData";
 import { urlImage } from "../config/config";
-import ImagesList from "../components/actors/imagesActors/ImagesList";
-// import FilmsActors from "../components/actors/filmsActors/FilmsActors";
+// import ImagesList from "../components/actors/imagesActors/ImagesList";
 import useFavorites from "../hooks/useFavorites";
 import FilmList from "../components/FilmList";
+import SliderActorsImagesList from "../components/Sliders/SliderActorsImagesList";
 
 function Actor() {
     const paramsActorPage = useParams();
@@ -59,9 +59,14 @@ function Actor() {
             <h1 className="text-5xl text-cyan-950 py-4">Actor</h1>
             <div className="max-w-[1100px] mx-auto">
                 <h2 className="text-4xl py-3 my-2 font-bold text-amber-600 text-left">{actorFile.name}</h2>
-                <div className="flex gap-5 bg-gray-900/80 p-5 rounded-md">
-                    <img src={`${urlImage}${actorFile.profile_path}`} alt="Poster" className="object-cover rounded-md h-[32rem]" />
-                    <div className="">
+
+                <div
+                    className="flex gap-5 bg-gray-900/80 p-5 rounded-md">
+                    <img
+                        src={`${urlImage}${actorFile.profile_path}`}
+                        alt="Poster"
+                        className="object-cover rounded-md h-[32rem]" />
+                    <div>
                         <p className="text-left text-amber-600 mr-2 font-bold">{'Birthday:' + ' '}
                             <span className="text-white font-normal">{actorFile.birthday}</span>
                         </p>
@@ -71,10 +76,14 @@ function Actor() {
                         <p className="text-left text-white">{actorFile.biography}</p>
                     </div>
                 </div>
+
                 <div className="bg-gray-900/80 p-5 rounded-md my-4">
-                    <h2 className="text-3xl py-3 my-2 font-bold text-amber-600 text-center">Images</h2>
-                    <ImagesList actorImagesList={actorImage} />
+                    <h2
+                        className="text-3xl py-3 my-2 font-bold text-amber-600 text-center"
+                    >Images</h2>
+                    <SliderActorsImagesList actorImage={actorImage} />
                 </div>
+
                 <div className="bg-gray-900/80 p-5 rounded-md my-4">
                     <h2 className="text-3xl py-3 my-2 font-bold text-amber-600 text-center">Films</h2>
                     <FilmList filmList={actorVideo}

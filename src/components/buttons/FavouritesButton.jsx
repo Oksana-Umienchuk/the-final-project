@@ -6,7 +6,7 @@ function FavouritesButton({ isFavourite, onClick }) {
 
     return (
         <Button onClick={onClick}
-            className=" hover:amber-400 focus: group rounded-lg bg-concrete-100 transition-colors">
+            className=" hover:amber-400 focus: group rounded-lg bg-concrete-100">
             <svg
                 fill={isFavourite ? `gold` : `white`}
                 className="h-9 w-9 drop-shadow-md fill-concrete-100 stroke-silver-500 group-hover:stroke-white" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">

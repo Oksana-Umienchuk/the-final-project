@@ -1,5 +1,5 @@
-import Slider from "../components/home/Slider";
-import SliderTrending from "../components/home/SliderTrending";
+import Slider from "../components/Sliders/Slider";
+import SliderTrending from "../components/Sliders/SliderTrending";
 
 import { urlTrendingDay, urlTrendingWeek } from '../config/config';
 

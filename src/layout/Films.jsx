@@ -5,6 +5,7 @@ import getData from "../api/getData";
 import PaginationList from "../components/PaginationList";
 import FilmList from "../components/FilmList";
 import useFavorites from "../hooks/useFavorites";
+// import HideOnScroll from "../components/buttons/HideOnScroll";
 
 function Films() {
 

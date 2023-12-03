@@ -10,7 +10,6 @@ import { urlImageOriginal } from '../config/config';
 function Film() {
     const params = useParams();
     const navigate = useNavigate();
-    // const [isShowVideo, setIsShowVideo] = useState(false);
 
     const [film, setFilm] = useState(
         () => {
@@ -19,15 +18,6 @@ function Film() {
             ) || null;
         }
     );
-
-    // const [videoKey, setVideoKey] = useState(
-
-    //     () => {
-    //         return JSON.parse(
-    //             window.localStorage.getItem(`https://api.themoviedb.org/3/movie/${params.id}/videos?language=en-US`)
-    //         ) || '';
-    //     }
-    // );
 
     useEffect(
         () => {
@@ -56,25 +46,6 @@ function Film() {
                     }
                 )
                 .catch(err => console.error(err));
-
-            // fetch(`https://api.themoviedb.org/3/movie/${params.id}/videos?language=en-US`, options)
-
-            //     .then(response => response.json())
-            //     .then(
-            //         (response) => {
-            //             if (response.results.length > 0) {
-            //                 setVideoKey(response.results[0].key);
-            //             } else {
-            //                 return;
-            //             }
-
-            //             window.localStorage.setItem(
-            //                 `https://api.themoviedb.org/3/movie/${params.id}/videos?language=en-US`,
-            //                 JSON.stringify(response)
-            //             );
-            //         }
-            //     )
-            //     .catch(err => console.error(err));
         },
         [params]
     );
@@ -101,19 +72,6 @@ function Film() {
                         <span>{film.release_date}</span>
                     </p>
                     <p className="my-3">ID: {params.id}</p>
-                    {/* <div className="my-3">
-                        <Button
-                            variant="contained"
-                            className='p-2 my-5 bg-blue-800 z-10'
-                            onClick={() => { setIsShowVideo(!isShowVideo); }}
-                        >
-                            {isShowVideo ? 'Hide Video' : 'Trailer'}
-                        </Button>
-                    </div> */}
-                    {/* {isShowVideo && <VideoPlayer videoKey={videoKey}
-                        className="video-container" />} */}
-                    {/* <VideoPlayer videoKey={videoKey}
-                        className="video-container" /> */}
                     <VideoPlayer videoId={film.id}
                         className="video-container" />
                     <ActorsList filmId={film.id} />
