@@ -26,8 +26,6 @@ function VideoPlayer({ videoId }) {
         (video) => video.type.toLocaleLowerCase() === 'trailer'
     );
 
-    // console.log(videosList, trailerKey);
-
     if (!trailerKey) return null;
 
     return (

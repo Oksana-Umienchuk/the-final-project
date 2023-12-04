@@ -27,11 +27,10 @@ function Search() {
             );
 
             setTotalPages(data ? data.total_pages : 1);
-            console.log(data);
             return data && data.results ? data.results : [];
         }
     );
-    console.log(filmList);
+
     useEffect(() => {
 
         async function getSearch() {
@@ -42,16 +41,14 @@ function Search() {
             setFilmList(data.results);
             setTotalPages(data.total_pages);
         }
-        console.log(filmList.length);
-        // if (!filmList.length || page !== currentPage) {
+
         getSearch();
         setCurrentPage(page);
-        // }
 
     }, [page, currentPage, urlSearch]);
 
     const [, favoritesIdList, addToFavorites] = useFavorites();
-    console.log(filmList);
+
     return (
         <>
             <h1 className="text-5xl text-cyan-950 py-4">Search Results</h1>

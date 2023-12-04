@@ -10,18 +10,17 @@
 /*slider*/
 
 .swiper-button-next {
-    background-color: rgba(255, 255, 255, 0.1);
-    padding: 30px;
-    height: 17px;
-    width: 17px;
-    border-radius: 50%;
+    padding: 0;
+    height: auto;
+    width: auto;
+    background-color: transparent;
 
-    @media (max-width: 767px) {
-        padding: 0;
-        height: auto;
-        width: auto;
-        border-radius: 0;
-        background-color: transparent;
+    @media screen and (min-width: 767px) {
+        background-color: rgba(255, 255, 255, 0.1);
+        padding: 30px;
+        height: 17px;
+        width: 17px;
+        border-radius: 50%;
     }
 }
 
@@ -32,18 +31,17 @@
 }
 
 .swiper-button-prev {
-    background-color: rgba(255, 255, 255, 0.2);
-    padding: 30px;
-    height: 17px;
-    width: 17px;
-    border-radius: 50%;
+    height: auto;
+    width: auto;
+    background-color: transparent;
 
-    @media (max-width: 767px) {
+    @media screen and (min-width: 767px) {
+        background-color: rgba(255, 255, 255, 0.2);
         padding: 0;
-        height: auto;
-        width: auto;
-        border-radius: 0;
-        background-color: transparent;
+        padding: 30px;
+        height: 17px;
+        width: 17px;
+        border-radius: 50%;
     }
 }
 

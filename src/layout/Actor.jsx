@@ -13,7 +13,6 @@ function Actor() {
     const urlActorImages = `/person/${paramsActorPage.id}/images`;
     const urlActorFilms = `/person/${paramsActorPage.id}/movie_credits?language=en-US`;
 
-    // console.log(urlActorFilms);
     const [actorFile, setActorFile] = useState({});
     const [actorImage, setActorImage] = useState([]);
     const [actorVideo, setActorVideo] = useState([]);

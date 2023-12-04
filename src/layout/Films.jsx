@@ -47,7 +47,6 @@ function Films() {
     }, [page, currentPage]);
 
     const [, favoritesIdList, addToFavorites] = useFavorites();
-    console.log(typeof filmList);
 
     return (
         <>
