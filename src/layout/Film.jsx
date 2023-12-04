@@ -53,7 +53,7 @@ function Film() {
     if (!film) return <p>Loading...</p>;
 
     return (
-        <div className="pb-5 max-w-[1100px] mx-auto">
+        <div className="pb-5 max-w-[1100px] mx-auto pt-16 sm:pt-0">
             <div className="relative">
                 <img src={`${urlImageOriginal}${film.backdrop_path}`} alt="Poster" className="object-cover" />
                 <div className="p-4 mt-4 text-xl text-left text-white bg-gray-900/80 rounded-md">

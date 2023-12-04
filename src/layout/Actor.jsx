@@ -57,10 +57,9 @@ function Actor() {
         <>
             <h1 className="text-5xl text-cyan-950 py-4">Actor</h1>
             <div className="max-w-[1100px] mx-auto">
-                <h2 className="text-4xl py-3 my-2 font-bold text-amber-600 text-left">{actorFile.name}</h2>
-
+                <h2 className="text-4xl p-5 py-3 my-2 font-bold text-amber-600 text-left">{actorFile.name}</h2>
                 <div
-                    className="flex gap-5 bg-gray-900/80 p-5 rounded-md">
+                    className="flex flex-col gap-5 bg-gray-900/80 p-5 rounded-md md:flex-row">
                     <img
                         src={`${urlImage}${actorFile.profile_path}`}
                         alt="Poster"

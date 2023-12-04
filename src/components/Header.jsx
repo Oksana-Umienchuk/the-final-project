@@ -13,7 +13,7 @@ function Header() {
 
     return (
         <>
-            <header className="m-auto py-1 px-3 border-b flex justify-between fixed z-50 bg-slate-100/75 left-0 right-0 w-screen">
+            <header className="m-auto py-3 px-3 border-b flex justify-around fixed z-50 bg-slate-100/75 left-0 right-0 w-screen">
                 {
                     matches ?
                         null :
